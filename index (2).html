@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marwane Milizi – Portfolio BTS SIO SISR</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --bg2: #161b27;
+      --bg3: #1e2535;
+      --accent: #6c63ff;
+      --accent2: #00d4ff;
+      --text: #e8eaf0;
+      --muted: #8b90a0;
+      --border: #2a3045;
+      --white: #ffffff;
+      --green: #22c55e;
+      --radius: 10px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(15,17,23,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-brand {
+      font-weight: 700; font-size: 17px; color: var(--white);
+      letter-spacing: .3px;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 14px;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 80px 40px; max-width: 960px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--accent2); background: rgba(0,212,255,.08);
+      border: 1px solid rgba(0,212,255,.2);
+      padding: 4px 12px; border-radius: 20px; margin-bottom: 18px;
+    }
+    h2 { font-size: 30px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .subtitle { color: var(--muted); font-size: 15px; margin-bottom: 40px; max-width: 620px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 60px;
+      max-width: 100%;
+      background: linear-gradient(135deg, #0f1117 0%, #161b27 50%, #0f1117 100%);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 600px 400px at 70% 50%, rgba(108,99,255,.07) 0%, transparent 70%);
+    }
+    .hero-inner {
+      max-width: 960px; margin: 0 auto; padding: 0 40px;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block; font-size: 12px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--accent); background: rgba(108,99,255,.1);
+      border: 1px solid rgba(108,99,255,.25);
+      padding: 5px 14px; border-radius: 20px; margin-bottom: 22px;
+    }
+    #hero h1 {
+      font-size: clamp(36px, 6vw, 58px); font-weight: 800;
+      color: var(--white); line-height: 1.15; margin-bottom: 12px;
+    }
+    #hero h1 span { color: var(--accent); }
+    .hero-role {
+      font-size: 17px; color: var(--accent2); font-weight: 500;
+      margin-bottom: 18px;
+    }
+    .hero-desc {
+      color: var(--muted); max-width: 560px; font-size: 15px;
+      margin-bottom: 34px; line-height: 1.75;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      padding: 11px 26px; border-radius: var(--radius);
+      text-decoration: none; font-weight: 600; font-size: 14px;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: #5a52d5; transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid var(--border); color: var(--text);
+      padding: 11px 26px; border-radius: var(--radius);
+      text-decoration: none; font-weight: 500; font-size: 14px;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── CURSUS ── */
+    .timeline { position: relative; padding-left: 24px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+      width: 2px; background: var(--border);
+    }
+    .tl-item { position: relative; margin-bottom: 36px; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -30px; top: 4px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(108,99,255,.2);
+    }
+    .tl-date { font-size: 12px; color: var(--accent2); font-weight: 600; margin-bottom: 4px; }
+    .tl-title { font-size: 17px; font-weight: 700; color: var(--white); }
+    .tl-school { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 8px; }
+    .tl-desc { color: var(--muted); font-size: 14px; }
+
+    /* ── CARDS GENERIC ── */
+    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card-num {
+      font-size: 11px; font-weight: 700; color: var(--accent);
+      background: rgba(108,99,255,.1); border-radius: 4px;
+      padding: 2px 8px; display: inline-block; margin-bottom: 10px;
+    }
+    .card h3 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 13.5px; }
+
+    /* ── STAGE ── */
+    .stage-header {
+      display: grid; grid-template-columns: 200px 1fr; gap: 30px;
+      align-items: start; margin-bottom: 32px;
+    }
+    .stage-img {
+      width: 100%; aspect-ratio: 1; object-fit: cover;
+      border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--bg3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px;
+    }
+    .stage-meta h3 { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .stage-company { color: var(--accent2); font-weight: 600; font-size: 14px; margin-bottom: 12px; }
+    .stage-meta p { color: var(--muted); font-size: 14px; }
+
+    /* ── PROJETS ── */
+    .project-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; margin-bottom: 20px;
+    }
+    .project-card:hover { border-color: var(--accent); }
+    .project-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+    .project-title { font-size: 17px; font-weight: 700; color: var(--white); }
+    .project-sub { font-size: 13px; color: var(--accent2); margin-top: 2px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag {
+      font-size: 12px; font-weight: 500; color: var(--accent);
+      background: rgba(108,99,255,.1); border: 1px solid rgba(108,99,255,.2);
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .project-block { margin-bottom: 10px; }
+    .project-block strong { color: var(--text); font-size: 13px; }
+    .project-block p { color: var(--muted); font-size: 13.5px; }
+
+    /* ── STACK ── */
+    .stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stack-item {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+    }
+    .stack-icon { font-size: 22px; margin-bottom: 10px; }
+    .stack-item h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .stack-item p { color: var(--muted); font-size: 13px; }
+
+    /* ── VEILLE ── */
+    .veille-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px; margin-bottom: 20px;
+    }
+    .veille-card h3 { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .veille-topic { color: var(--accent2); font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+    .veille-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .veille-col h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .veille-col p { color: var(--muted); font-size: 13.5px; }
+    .sources-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .source-item {
+      background: var(--bg3); border-radius: 8px; padding: 14px;
+      border: 1px solid var(--border);
+    }
+    .source-item .src-num { font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+    .source-item h5 { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+    .source-item p { font-size: 12px; color: var(--muted); }
+
+    /* ── GRILLE DE COMPÉTENCES ── */
+    .competences-intro { margin-bottom: 30px; }
+    .bloc-comp {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 16px; overflow: hidden;
+    }
+    .bloc-header {
+      background: var(--bg3); padding: 16px 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .bloc-code {
+      font-size: 11px; font-weight: 700; background: var(--accent);
+      color: #fff; padding: 3px 10px; border-radius: 20px;
+    }
+    .bloc-header h3 { font-size: 15px; font-weight: 700; color: var(--white); }
+    .comp-list { padding: 16px 24px; }
+    .comp-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .comp-row:last-child { border-bottom: none; }
+    .comp-check {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; flex-shrink: 0; color: var(--green);
+    }
+    .comp-text { font-size: 13.5px; color: var(--text); }
+    .comp-context { font-size: 12px; color: var(--muted); margin-left: auto; font-style: italic; }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .contact-info h3 { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+    .contact-info p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+    .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .contact-icon { font-size: 18px; width: 36px; text-align: center; }
+    .contact-item a { color: var(--accent2); text-decoration: none; font-size: 14px; }
+    .project-pro {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .project-pro h3 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .project-pro p { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+    .project-pro strong { color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 30px 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 13px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 13px; }
+      section { padding: 60px 20px; }
+      .hero-inner { padding: 0 20px; }
+      .cards-grid, .stack-grid, .veille-cols, .contact-grid, .sources-row { grid-template-columns: 1fr; }
+      .stage-header { grid-template-columns: 1fr; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand"><span>M</span>arwane Milizi</div>
+  <ul class="nav-links">
+    <li><a href="#cursus">Cursus</a></li>
+    <li><a href="#stage">Stage</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#veille">Veille</a></li>
+    <li><a href="#infrastructure">Infrastructure</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">BTS SIO · Option SISR</div>
+    <h1>Marwane <span>Milizi</span></h1>
+    <div class="hero-role">Technicien Supérieur en Services Informatiques aux Organisations</div>
+    <p class="hero-desc">
+      Étudiant en 2ᵉ année de BTS SIO au Lycée Jacques Brel, passionné par l'infrastructure réseau, la supervision et la cybersécurité. Mon objectif : maîtriser les technologies qui protègent et optimisent les systèmes d'information des entreprises modernes.
+    </p>
+    <div class="hero-btns">
+      <a href="#projets" class="btn-primary">Découvrir mon parcours</a>
+      <a href="#contact" class="btn-outline">Me contacter</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- CURSUS -->
+<section id="cursus">
+  <div class="section-tag">Formation</div>
+  <h2>Mon Cursus</h2>
+  <p class="subtitle">Un parcours orienté systèmes, réseaux et infrastructure depuis le lycée.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2024 – 2026</div>
+      <div class="tl-title">BTS SIO – Option SISR</div>
+      <div class="tl-school">Lycée Jacques Brel</div>
+      <p class="tl-desc">Formation en Services Informatiques aux Organisations, spécialisation Solutions d'Infrastructure, Systèmes et Réseaux. Administration système, sécurisation des réseaux et virtualisation pour répondre aux besoins des entreprises.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2021 – 2024</div>
+      <div class="tl-title">Bac Pro Systèmes Numériques</div>
+      <div class="tl-school">Lycée Jacques de Flesselles</div>
+      <p class="tl-desc">Option RISC (Réseaux Informatiques et Systèmes Communicants). Première immersion dans les infrastructures numériques, développement des compétences techniques fondamentales en réseau et systèmes communicants.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- STAGE -->
+<section id="stage">
+  <div class="section-tag">Stages Professionnels</div>
+  <h2>Expériences en Entreprise</h2>
+  <p class="subtitle">Deux stages réalisés au cours de ma formation BTS SIO SISR.</p>
+
+  <!-- STAGE 1 -->
+  <div style="margin-bottom:48px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+      <div style="background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.25);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:600;color:var(--accent);">Stage 1ère année</div>
+      <div style="height:1px;flex:1;background:var(--border);"></div>
+    </div>
+    <div class="stage-header">
+      <div class="stage-img">🏢</div>
+      <div class="stage-meta">
+        <h3>Technicien Support &amp; Déploiement</h3>
+        <div class="stage-company">Boehringer Ingelheim &nbsp;·&nbsp; 2025</div>
+        <p>Stage au sein d'une entreprise pharmaceutique de renommée internationale. Participation active aux projets de migration et d'assistance technique, développement des compétences en gestion de parc et support utilisateur dans un environnement professionnel exigeant.</p>
+      </div>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>Projet Migration Mobile</h3>
+        <p>Renouvellement complet de la flotte téléphonique du site. Distribution et configuration initiale des iPhones pour l'ensemble des collaborateurs, garantissant une transition fluide vers les nouveaux équipements.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>Support de Proximité</h3>
+        <p>Gestion quotidienne des tickets d'incidents utilisateurs (Niveau 1) avec interventions physiques sur site. Résolution efficace des problématiques techniques courantes.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>Suivi d'Activité</h3>
+        <p>Gestion du cycle de vie des tickets : suivi, relance et clôture dans le respect des délais d'intervention (SLA). Apprentissage des bonnes pratiques ITIL et des processus de gestion des incidents.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">04</div>
+        <h3>Gestion de Parc</h3>
+        <p>Préparation du matériel informatique (Staging), gestion optimisée des stocks et remise professionnelle du matériel aux utilisateurs. Traçabilité et disponibilité des équipements.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAGE 2 -->
+  <div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+      <div style="background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:600;color:var(--accent2);">Stage 2ème année</div>
+      <div style="height:1px;flex:1;background:var(--border);"></div>
+    </div>
+    <div class="stage-header">
+      <div class="stage-img">🏫</div>
+      <div class="stage-meta">
+        <h3>Technicien Systèmes &amp; Infrastructure</h3>
+        <div class="stage-company">Lycée Jacques Brel &nbsp;·&nbsp; 2026</div>
+        <p>Stage encadré par mon professeur référent au sein de l'établissement. Missions orientées infrastructure réseau et déploiement système, avec une intervention concrète sur l'environnement informatique du lycée.</p>
+      </div>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>Déploiement Serveur FOG</h3>
+        <p>Installation et configuration d'un serveur FOG pour permettre le déploiement automatisé d'images système (Sysprep) sous Windows 11 et Linux Mint / Ubuntu sur les postes du lycée via le réseau.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>Maintenance Baie de Brassage</h3>
+        <p>Audit et nettoyage complet de la baie réseau : identification et retrait des câbles défectueux ou inutilisés, réorganisation et étiquetage des câbles fonctionnels pour améliorer la lisibilité et la maintenabilité de l'infrastructure.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<hr class="divider" />
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="section-tag">Réalisations Techniques</div>
+  <h2>Projets</h2>
+  <p class="subtitle">Projets réalisés dans le cadre des épreuves E4 et E6 du BTS SIO, démontrant ma maîtrise des infrastructures systèmes et réseaux.</p>
+
+  <!-- Projet 1 : Centreon + Graylog -->
+  <div class="project-card">
+    <div class="project-header">
+      <div>
+        <div class="project-title">Supervision &amp; Analyse des Logs</div>
+        <div class="project-sub">Centreon + Graylog</div>
+      </div>
+    </div>
+    <div class="project-block">
+      <strong>Contexte :</strong>
+      <p>Dans le cadre du projet GSB, mise en place d'une solution de supervision complète de l'infrastructure réseau pour améliorer la tolérance aux pannes et renforcer la surveillance face aux risques cyber.</p>
+    </div>
+    <div class="project-block">
+      <strong>Réalisation – Centreon :</strong>
+      <p>Installation et configuration de Centreon sur serveur Linux. Ajout et paramétrage de l'ensemble des équipements supervisés (serveurs, switchs, routeurs) via SNMP. Création de tableaux de bord de monitoring, configuration des seuils d'alerte et notifications. Supervision des services critiques : DNS, DHCP, HTTP.</p>
+    </div>
+    <div class="project-block">
+      <strong>Réalisation – Graylog :</strong>
+      <p>Déploiement de Graylog en parallèle pour la centralisation et l'analyse des logs système. Configuration des sources de logs (Syslog) depuis les différents équipements de l'infrastructure. Mise en place de règles d'alerte pour détecter les comportements suspects et tentatives d'intrusion.</p>
+    </div>
+    <div class="tags">
+      <span class="tag">Centreon</span>
+      <span class="tag">Graylog</span>
+      <span class="tag">SNMP</span>
+      <span class="tag">Syslog</span>
+      <span class="tag">Monitoring</span>
+      <span class="tag">Linux</span>
+      <span class="tag">Sécurité</span>
+    </div>
+  </div>
+
+  <!-- Projet 2 : FOG -->
+  <div class="project-card">
+    <div class="project-header">
+      <div>
+        <div class="project-title">Déploiement Automatisé d'Images OS</div>
+        <div class="project-sub">Serveur FOG – Lycée Jacques Brel</div>
+      </div>
+    </div>
+    <div class="project-block">
+      <strong>Contexte :</strong>
+      <p>Le lycée avait besoin d'une solution pour réinstaller rapidement les salles C207 et C208 avec une image système propre (Windows ou Linux) via le réseau. Le projet s'est déroulé en deux phases : maquettage dans un réseau isolé sur Proxmox (192.168.2.x) derrière IPFire, puis migration en production sur le réseau administrateur du lycée.</p>
+    </div>
+    <div class="project-block">
+      <strong>Architecture &amp; Installation :</strong>
+      <p>Serveur FOG déployé sur une VM Debian 13 (Trixie) hébergée sur le cluster Proxmox du lycée, avec adresse IP fixe 172.28.30.15. Le DHCP est géré par le contrôleur de domaine Windows (Active Directory) — pas de DHCP FOG activé pour éviter les conflits réseau.</p>
+    </div>
+    <div class="project-block">
+      <strong>Démarrage PXE :</strong>
+      <p>Configuration des options DHCP sur le serveur Windows AD : option 66 (Boot Server) pointant vers 172.28.30.15, option 67 (Boot File) avec ipxe.efi pour les postes UEFI récents et undionly.kpxe pour la compatibilité Legacy/BIOS. Désactivation du Secure Boot et de BitLocker sur les postes clients.</p>
+    </div>
+    <div class="project-block">
+      <strong>Masterisation des images :</strong>
+      <p>Image principale Windows 11 créée avec procédure Sysprep (sysprep /generalize /oobe) pour supprimer les SID et éviter les conflits lors du déploiement multi-postes. Capture en mode "Single Disk – Resizable" pour compatibilité avec différentes tailles de disques. Images Linux Mint et Ubuntu configurées avec les logiciels open-source des TP. Extension du stockage à 282 Go via GParted à chaud.</p>
+    </div>
+    <div class="tags">
+      <span class="tag">FOG Project</span>
+      <span class="tag">PXE Boot</span>
+      <span class="tag">Debian 13</span>
+      <span class="tag">Sysprep</span>
+      <span class="tag">Windows 11</span>
+      <span class="tag">Linux Mint</span>
+      <span class="tag">Proxmox</span>
+      <span class="tag">Active Directory</span>
+      <span class="tag">GParted</span>
+    </div>
+  </div>
+
+  <!-- Stack technique -->
+  <h3 style="font-size:18px;font-weight:700;color:var(--white);margin:40px 0 18px;">Stack Technique</h3>
+  <div class="stack-grid">
+    <div class="stack-item">
+      <div class="stack-icon">🖥️</div>
+      <h4>Systèmes d'Exploitation</h4>
+      <p>Windows 10/11, Windows Server, Debian/Ubuntu pour les serveurs et services critiques.</p>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">🌐</div>
+      <h4>Réseau</h4>
+      <p>Cisco (VLAN, Routage), Adressage IP, DNS/DHCP. Configuration et dépannage des infrastructures réseau d'entreprise.</p>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">🛠️</div>
+      <h4>Outils &amp; Technologies</h4>
+      <p>Centreon, Graylog, FOG Project, Wireshark, VirtualBox. Supervision, analyse réseau et virtualisation.</p>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">📱</div>
+      <h4>Gestion de Parc</h4>
+      <p>iOS et Android : configuration, déploiement et gestion de flottes mobiles. GLPI pour l'inventaire et le suivi des tickets.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- VEILLE -->
+<section id="veille">
+  <div class="section-tag">Veille Technologique</div>
+  <h2>La Conteneurisation</h2>
+  <p class="subtitle">Docker &amp; Kubernetes</p>
+
+  <div class="veille-card">
+    <div class="veille-cols">
+      <div class="veille-col">
+        <h4>Pourquoi ce choix ?</h4>
+        <p>L'industrie informatique délaisse progressivement les machines virtuelles traditionnelles, lourdes et gourmandes en ressources, au profit des conteneurs légers et rapides. Un conteneur Docker démarre en quelques secondes là où une VM nécessite plusieurs minutes. Cette révolution redéfinit le déploiement et la gestion des applications modernes.</p>
+      </div>
+      <div class="veille-col">
+        <h4>Mon Approche</h4>
+        <p>Je m'intéresse au fonctionnement de Docker pour le déploiement d'applications conteneurisées et à l'orchestration avancée via Kubernetes. Je surveille les enjeux de sécurité liés à ces environnements (isolation des conteneurs, gestion des images, vulnérabilités CVE) et les tendances cloud-native.</p>
+      </div>
+    </div>
+
+    <!-- Concepts clés -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;">
+      <div style="background:var(--bg3);border-radius:8px;padding:16px;border:1px solid var(--border);">
+        <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:6px;">DOCKER</div>
+        <div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:6px;">Conteneurisation</div>
+        <p style="font-size:12px;color:var(--muted);">Empaqueter une application avec toutes ses dépendances dans un conteneur isolé, portable et léger.</p>
+      </div>
+      <div style="background:var(--bg3);border-radius:8px;padding:16px;border:1px solid var(--border);">
+        <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:6px;">KUBERNETES</div>
+        <div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:6px;">Orchestration</div>
+        <p style="font-size:12px;color:var(--muted);">Automatiser le déploiement, la mise à l'échelle et la gestion de conteneurs en production sur plusieurs serveurs.</p>
+      </div>
+      <div style="background:var(--bg3);border-radius:8px;padding:16px;border:1px solid var(--border);">
+        <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:6px;">SÉCURITÉ</div>
+        <div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:6px;">Isolation &amp; CVE</div>
+        <p style="font-size:12px;color:var(--muted);">Surveillance des vulnérabilités sur les images Docker publiques et bonnes pratiques de durcissement des conteneurs.</p>
+      </div>
+    </div>
+
+    <!-- Lien SISR -->
+    <div style="background:rgba(108,99,255,.06);border:1px solid rgba(108,99,255,.2);border-radius:8px;padding:16px;margin-bottom:24px;">
+      <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px;">LIEN AVEC LE MÉTIER SISR</div>
+      <p style="font-size:13.5px;color:var(--muted);">La conteneurisation s'inscrit directement dans les missions SISR : gestion de l'infrastructure, haute disponibilité des services, et sécurisation des environnements. Kubernetes remplace progressivement les VM dans les datacenters modernes — une compétence clé pour un technicien infrastructure de demain.</p>
+    </div>
+
+    <div class="sources-row">
+      <div class="source-item">
+        <div class="src-num">01 · Agrégateur</div>
+        <h5>Feedly</h5>
+        <p>Centralise mes flux RSS tech en un seul endroit</p>
+      </div>
+      <div class="source-item">
+        <div class="src-num">02 · Presse IT</div>
+        <h5>LeMagIT</h5>
+        <p>Actualités infrastructure et cloud en français</p>
+      </div>
+      <div class="source-item">
+        <div class="src-num">03 · Référence</div>
+        <h5>Docs officielles</h5>
+        <p>Documentation Docker et Kubernetes à jour</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES VEILLE -->
+  <h3 style="font-size:16px;font-weight:700;color:var(--white);margin:36px 0 16px;">📡 Sources de veille – Conteneurisation</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+    <a href="https://thenewstack.io/tag/docker/" target="_blank" rel="noopener" style="display:block;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="font-size:20px;margin-bottom:10px;">📰</div>
+      <div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;">The New Stack</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:12px;">Actualités Docker, Kubernetes et cloud-native</div>
+      <div style="font-size:12px;color:var(--accent);font-weight:500;">Consulter →</div>
+    </a>
+    <a href="https://www.docker.com/blog/" target="_blank" rel="noopener" style="display:block;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="font-size:20px;margin-bottom:10px;">🐳</div>
+      <div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;">Docker Blog</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:12px;">Blog officiel Docker – nouveautés et bonnes pratiques</div>
+      <div style="font-size:12px;color:var(--accent);font-weight:500;">Consulter →</div>
+    </a>
+    <a href="https://kubernetes.io/blog/" target="_blank" rel="noopener" style="display:block;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="font-size:20px;margin-bottom:10px;">☸️</div>
+      <div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;">Kubernetes Blog</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:12px;">Blog officiel Kubernetes – releases et tutoriels</div>
+      <div style="font-size:12px;color:var(--accent);font-weight:500;">Consulter →</div>
+    </a>
+    <a href="https://www.lemagit.fr/virtualisation" target="_blank" rel="noopener" style="display:block;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="font-size:20px;margin-bottom:10px;">🇫🇷</div>
+      <div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;">LeMagIT</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:12px;">Actualités IT en français – virtualisation et cloud</div>
+      <div style="font-size:12px;color:var(--accent);font-weight:500;">Consulter →</div>
+    </a>
+    <a href="https://feedly.com" target="_blank" rel="noopener" style="display:block;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="font-size:20px;margin-bottom:10px;">📲</div>
+      <div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;">Feedly</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:12px;">Agrégateur de flux RSS – ma veille centralisée</div>
+      <div style="font-size:12px;color:var(--accent);font-weight:500;">Consulter →</div>
+    </a>
+    <a href="https://docs.docker.com/" target="_blank" rel="noopener" style="display:block;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="font-size:20px;margin-bottom:10px;">📖</div>
+      <div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;">Documentation officielle</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:12px;">Docs Docker et Kubernetes – référence technique</div>
+      <div style="font-size:12px;color:var(--accent);font-weight:500;">Consulter →</div>
+    </a>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- INFRASTRUCTURE -->
+<section id="infrastructure">
+  <div class="section-tag">Architecture Réseau</div>
+  <h2>Infrastructure</h2>
+  <p class="subtitle">Schéma et description de l'infrastructure réseau mise en place dans le cadre du BTS SIO SISR.</p>
+  <!-- Légende zones -->
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;">
+    <div style="display:flex;align-items:center;gap:8px;"><div style="width:12px;height:12px;border-radius:3px;background:#EF9F27;opacity:.8;"></div><span style="font-size:13px;color:var(--muted);">Zone EXT – 172.28.214.x</span></div>
+    <div style="display:flex;align-items:center;gap:8px;"><div style="width:12px;height:12px;border-radius:3px;background:#1D9E75;opacity:.8;"></div><span style="font-size:13px;color:var(--muted);">Zone LAN – 10.0.214.x</span></div>
+    <div style="display:flex;align-items:center;gap:8px;"><div style="width:12px;height:12px;border-radius:3px;background:#378ADD;opacity:.8;"></div><span style="font-size:13px;color:var(--muted);">Zone DMZ – 10.0.214.x</span></div>
+    <div style="display:flex;align-items:center;gap:8px;"><div style="width:12px;height:12px;border-radius:3px;background:#D85A30;opacity:.8;"></div><span style="font-size:13px;color:var(--muted);">IPFire (pare-feu)</span></div>
+  </div>
+
+  <!-- Tableau machines -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px;">
+
+    <!-- EXT -->
+    <div style="background:var(--bg2);border:1px solid rgba(239,159,39,.3);border-radius:var(--radius);overflow:hidden;">
+      <div style="background:rgba(239,159,39,.1);padding:12px 16px;border-bottom:1px solid rgba(239,159,39,.2);">
+        <div style="font-size:11px;font-weight:700;color:#EF9F27;letter-spacing:1px;">ZONE EXT</div>
+        <div style="font-size:12px;color:var(--muted);">172.28.214.0/24</div>
+      </div>
+      <div style="padding:16px;">
+        <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:600;color:var(--white);">Debian DNS</div>
+          <div style="font-size:12px;color:var(--muted);">172.28.214.231</div>
+        </div>
+        <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:600;color:var(--white);">HAProxy</div>
+          <div style="font-size:12px;color:var(--muted);">172.28.214.180</div>
+          <div style="font-size:11px;color:var(--accent2);">→ redirige vers DMZ</div>
+        </div>
+        <div style="padding-top:4px;border-top:1px solid rgba(239,159,39,.2);">
+          <div style="font-size:13px;font-weight:700;color:#EF9F27;">IPFire (EXT)</div>
+          <div style="font-size:12px;color:var(--muted);">172.28.214.1</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAN -->
+    <div style="background:var(--bg2);border:1px solid rgba(29,158,117,.3);border-radius:var(--radius);overflow:hidden;">
+      <div style="background:rgba(29,158,117,.1);padding:12px 16px;border-bottom:1px solid rgba(29,158,117,.2);">
+        <div style="font-size:11px;font-weight:700;color:#1D9E75;letter-spacing:1px;">ZONE LAN</div>
+        <div style="font-size:12px;color:var(--muted);">10.0.214.0/24</div>
+      </div>
+      <div style="padding:16px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="padding:8px;background:var(--bg3);border-radius:6px;">
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Kali Linux</div>
+            <div style="font-size:11px;color:var(--muted);">.86</div>
+          </div>
+          <div style="padding:8px;background:var(--bg3);border-radius:6px;">
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Graylog</div>
+            <div style="font-size:11px;color:var(--muted);">.76</div>
+          </div>
+          <div style="padding:8px;background:var(--bg3);border-radius:6px;">
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Wazuh</div>
+            <div style="font-size:11px;color:var(--muted);">.77</div>
+          </div>
+          <div style="padding:8px;background:var(--bg3);border-radius:6px;">
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Active Dir.</div>
+            <div style="font-size:11px;color:var(--muted);">.66</div>
+          </div>
+          <div style="padding:8px;background:var(--bg3);border-radius:6px;">
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Srv Fichier</div>
+            <div style="font-size:11px;color:var(--muted);">.80</div>
+          </div>
+          <div style="padding:8px;background:var(--bg3);border-radius:6px;">
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Centreon</div>
+            <div style="font-size:11px;color:var(--muted);">.78</div>
+          </div>
+          <div style="padding:8px;background:var(--bg3);border-radius:6px;">
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Srv FOG</div>
+            <div style="font-size:11px;color:var(--muted);">.85</div>
+          </div>
+          <div style="padding:8px;background:var(--bg3);border-radius:6px;">
+            <div style="font-size:12px;font-weight:600;color:var(--white);">TrueNAS</div>
+            <div style="font-size:11px;color:var(--muted);">.68</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(29,158,117,.2);">
+          <div style="font-size:13px;font-weight:700;color:#1D9E75;">IPFire (LAN)</div>
+          <div style="font-size:12px;color:var(--muted);">10.0.214.65</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DMZ -->
+    <div style="background:var(--bg2);border:1px solid rgba(55,138,221,.3);border-radius:var(--radius);overflow:hidden;">
+      <div style="background:rgba(55,138,221,.1);padding:12px 16px;border-bottom:1px solid rgba(55,138,221,.2);">
+        <div style="font-size:11px;font-weight:700;color:#378ADD;letter-spacing:1px;">ZONE DMZ</div>
+        <div style="font-size:12px;color:var(--muted);">10.0.214.0/24</div>
+      </div>
+      <div style="padding:16px;">
+        <div style="margin-bottom:8px;padding:8px;background:var(--bg3);border-radius:6px;">
+          <div style="font-size:12px;font-weight:600;color:var(--white);">AlmaLinux</div>
+          <div style="font-size:11px;color:var(--muted);">10.0.214.40</div>
+        </div>
+        <div style="margin-bottom:8px;padding:8px;background:var(--bg3);border-radius:6px;">
+          <div style="font-size:12px;font-weight:600;color:var(--white);">HAProxy (DMZ)</div>
+          <div style="font-size:11px;color:var(--muted);">10.0.214.17 → web1/web2</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+          <div style="padding:8px;background:var(--bg3);border-radius:6px;">
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Web1</div>
+            <div style="font-size:11px;color:var(--muted);">.13</div>
+          </div>
+          <div style="padding:8px;background:var(--bg3);border-radius:6px;">
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Web2</div>
+            <div style="font-size:11px;color:var(--muted);">.14</div>
+          </div>
+        </div>
+        <div style="margin-bottom:12px;padding:8px;background:var(--bg3);border-radius:6px;">
+          <div style="font-size:12px;font-weight:600;color:var(--white);">Debian LAMP</div>
+          <div style="font-size:11px;color:var(--muted);">10.0.214.10 · phpMyAdmin</div>
+        </div>
+        <div style="padding-top:12px;border-top:1px solid rgba(55,138,221,.2);">
+          <div style="font-size:13px;font-weight:700;color:#378ADD;">IPFire (DMZ)</div>
+          <div style="font-size:12px;color:var(--muted);">10.0.214.1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Description rôles -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;">
+      <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px;">PARE-FEU</div>
+      <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px;">IPFire</div>
+      <p style="font-size:13px;color:var(--muted);">Sépare les trois zones réseau. Filtre les flux entre Internet, le LAN interne et la DMZ exposée. Trois interfaces distinctes pour un cloisonnement strict.</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;">
+      <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px;">SUPERVISION</div>
+      <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px;">Centreon + Graylog + Wazuh</div>
+      <p style="font-size:13px;color:var(--muted);">Centreon monitore la disponibilité via SNMP. Graylog centralise et analyse les logs. Wazuh assure la détection d'intrusion (EDR) sur les endpoints.</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;">
+      <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px;">LOAD BALANCING</div>
+      <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px;">HAProxy EXT → HAProxy DMZ</div>
+      <p style="font-size:13px;color:var(--muted);">Le HAProxy en zone EXT reçoit les requêtes externes et les redirige vers le HAProxy en DMZ, qui dispatche le trafic entre Web1 et Web2.</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;">
+      <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px;">DÉPLOIEMENT</div>
+      <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px;">FOG + Active Directory</div>
+      <p style="font-size:13px;color:var(--muted);">Le serveur FOG déploie les images OS via PXE. Le DHCP de l'AD (options 66/67) redirige les postes vers FOG au démarrage réseau. TrueNAS assure le stockage partagé du LAN.</p>
+    </div>
+  </div>
+</section>
+
+
+<hr class="divider" />
+
+<!-- GRILLE DE COMPÉTENCES -->
+<section id="competences">
+  <div class="section-tag">BTS SIO SISR</div>
+  <h2>Grille de Compétences</h2>
+  <p class="subtitle">Référentiel de compétences du BTS SIO option SISR – épreuves E4, E5 et E6.</p>
+
+  <!-- B1 -->
+  <div class="bloc-comp">
+    <div class="bloc-header">
+      <div class="bloc-code">B1</div>
+      <h3>Support et mise à disposition de services informatiques</h3>
+    </div>
+    <div class="comp-list">
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Gérer le patrimoine informatique</div>
+        <div class="comp-context">GLPI – Gestion de parc (stage Boehringer)</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Répondre aux incidents et aux demandes d'assistance</div>
+        <div class="comp-context">Support N1 – tickets SLA (stage)</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Développer la présence en ligne de l'organisation</div>
+        <div class="comp-context">Portfolio BTS SIO</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Travailler en mode projet</div>
+        <div class="comp-context">Projets Centreon, FOG</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Mettre à disposition des utilisateurs un service informatique</div>
+        <div class="comp-context">Déploiement FOG – images système</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Organiser son développement professionnel</div>
+        <div class="comp-context">Veille technologique – Docker/Kubernetes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B2 -->
+  <div class="bloc-comp">
+    <div class="bloc-header">
+      <div class="bloc-code">B2</div>
+      <h3>Cybersécurité des services informatiques</h3>
+    </div>
+    <div class="comp-list">
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Protéger les données à caractère personnel</div>
+        <div class="comp-context">RGPD – Boehringer Ingelheim</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Préserver l'identité numérique de l'organisation</div>
+        <div class="comp-context">Supervision Centreon + Graylog</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Sécuriser les équipements et les usages des utilisateurs</div>
+        <div class="comp-context">Analyse de logs – détection d'intrusions</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Garantir la disponibilité, l'intégrité et la confidentialité des données</div>
+        <div class="comp-context">Tolérance aux pannes – projet GSB</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Maintenir et améliorer un système informatique sécurisé</div>
+        <div class="comp-context">Syslog, SNMP, Graylog</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B3 SISR -->
+  <div class="bloc-comp">
+    <div class="bloc-header">
+      <div class="bloc-code">B3</div>
+      <h3>Administration des infrastructures systèmes et réseaux (SISR)</h3>
+    </div>
+    <div class="comp-list">
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Concevoir une architecture réseau</div>
+        <div class="comp-context">VLAN, routage Cisco – cours et TP</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Installer, configurer et déployer des équipements réseau</div>
+        <div class="comp-context">Switch, routeur, DNS/DHCP</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Superviser et exploiter un réseau informatique</div>
+        <div class="comp-context">Centreon – monitoring SNMP</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Assurer la disponibilité des services</div>
+        <div class="comp-context">Tolérance aux pannes – projet GSB</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Virtualiser des serveurs et des postes de travail</div>
+        <div class="comp-context">VirtualBox – environnements de test</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Automatiser le déploiement de systèmes d'exploitation</div>
+        <div class="comp-context">FOG Project – Sysprep Win11 / Linux</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-check">✓</div>
+        <div class="comp-text">Gérer les annuaires et les accès utilisateurs</div>
+        <div class="comp-context">Active Directory – gestion des comptes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">Contact</div>
+  <h2>Me Contacter</h2>
+  <p class="subtitle">Disponible pour toute opportunité de stage, d'alternance ou d'échange sur les technologies qui nous passionnent.</p>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Informations de Contact</h3>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <a href="mailto:marwane.milizipro@gmail.com">marwane.milizipro@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🔗</div>
+        <a href="https://linkedin.com" target="_blank">LinkedIn – Marwane Milizi</a>
+      </div>
+      <br />
+      <a href="mailto:marwane.milizipro@gmail.com" class="btn-primary">Envoyer un email</a>
+    </div>
+    <div class="project-pro">
+      <h3>Mon Projet Professionnel</h3>
+      <p>Poursuite d'études en <strong>Licence Professionnelle</strong>, avec pour objectif à moyen terme un <strong>Master en Ingénierie Système &amp; Réseau</strong>.</p>
+      <p>Mon ambition : devenir un expert des infrastructures IT capables de concevoir, déployer et sécuriser les systèmes d'information de demain.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Marwane Milizi · Portfolio BTS SIO SISR · Lycée Jacques Brel</p>
+</footer>
+
+
+
+</body>
+</html>
